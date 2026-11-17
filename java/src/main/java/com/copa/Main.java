@@ -1,6 +1,8 @@
 package com.copa;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -12,16 +14,19 @@ public class Main {
         List<Emparejamiento> cuartos = Eliminatorias.armarCuartos(partidosGrupos);
         List<Partido> eliminatorias = Eliminatorias.simularEliminatorias(cuartos, datos.equipos(), aleatorios);
 
-        for (Partido p : eliminatorias) {
-            String penales = p.penales() != null
-                    ? " (penales " + p.penales().local() + "-" + p.penales().visitante() + ")"
-                    : "";
-            System.out.println(p.fase() + ": " + p.local() + " " + p.golesLocal()
-                    + " - " + p.golesVisitante() + " " + p.visitante() + penales
-                    + "  → gana " + Eliminatorias.ganador(p));
-        }
+        List<Partido> todos = new ArrayList<>(partidosGrupos);
+        todos.addAll(eliminatorias);
 
-        Partido finalTorneo = eliminatorias.get(eliminatorias.size() - 1);
-        System.out.println("CAMPEÓN: equipo " + Eliminatorias.ganador(finalTorneo));
+        List<StatJugador> statsJugadores = Estadisticas.estadisticasJugadores(datos.equipos(), todos);
+        List<StatEquipo> statsEquipos = Estadisticas.estadisticasEquipos(todos);
+
+        System.out.println("Top 5 goleadores:");
+        statsJugadores.stream()
+                .sorted(Comparator.comparingInt(StatJugador::goles).reversed())
+                .limit(5)
+                .forEach(System.out::println);
+
+        System.out.println("Equipos:");
+        statsEquipos.forEach(System.out::println);
     }
 }
