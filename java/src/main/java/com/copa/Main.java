@@ -28,5 +28,8 @@ public class Main {
 
         System.out.println("Equipos:");
         statsEquipos.forEach(System.out::println);
+
+        Premios premios = CalculoPremios.calcularPremios(statsJugadores, statsEquipos);
+        System.out.println(premios);
     }
 }
