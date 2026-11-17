@@ -1,0 +1,9 @@
+.idea/
+out/
+java/target/
+scala/target/
+scala/project/target/
+scala/.bsp/
+python/__pycache__/
+data/aleatorios.txt
+.DS_Store
