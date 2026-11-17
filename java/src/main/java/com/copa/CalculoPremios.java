@@ -40,13 +40,15 @@ public class CalculoPremios {
 
     // ---------- Todos los premios ----------
 
-    public static Premios calcularPremios(List<StatJugador> jugadores, List<StatEquipo> equipos) {
+    public static Premios calcularPremios(List<StatJugador> jugadores, List<StatEquipo> equipos,
+                                          int mejorApostador) {
         return new Premios(
                 mejorSegun(jugadores, MEJOR_JUGADOR).jugador(),
                 mejorSegun(jugadores, BOTA_DE_ORO).jugador(),
                 mejorSegun(equipos, MEJOR_EQUIPO).equipo(),
                 mejorSegun(equipos, VALLA_MENOS_VENCIDA).equipo(),
-                mejorSegun(equipos, FAIR_PLAY).equipo()
+                mejorSegun(equipos, FAIR_PLAY).equipo(),
+                mejorApostador
         );
     }
 }

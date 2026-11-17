@@ -1,35 +1,51 @@
 package com.copa;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
+
+    /** Convierte ["--input", "a.json", "--out", "b.json"] en {input=a.json, out=b.json}. */
+    static Map<String, String> leerArgumentos(String[] args) {
+        Map<String, String> opciones = new HashMap<>();
+        for (int i = 0; i + 1 < args.length; i += 2) {
+            opciones.put(args[i].replace("--", ""), args[i + 1]);
+        }
+        return opciones;
+    }
+
     public static void main(String[] args) throws IOException {
-        String rutaAleatorios = "data/aleatorios.txt";
+        Map<String, String> opciones = leerArgumentos(args);
+        String rutaInput = opciones.getOrDefault("input", "data/input.json");
+        String rutaAleatorios = opciones.getOrDefault("aleatorios", "data/aleatorios.txt");
+        String rutaSalida = opciones.getOrDefault("out", "out/java.json");
+        int cantidadTorneos = Integer.parseInt(opciones.getOrDefault("torneos", "1"));
+
+        DatosTorneo datos = Datos.cargarDatos(rutaInput);
         Aleatorios aleatoriosPartidos = new Aleatorios(rutaAleatorios);
         Aleatorios aleatoriosApuestas = new Aleatorios(rutaAleatorios, 50_000);
-        DatosTorneo datos = Datos.cargarDatos("data/input.json");
 
-        List<Partido> partidosGrupos = FaseGrupos.simularFaseGrupos(datos.equipos(), aleatoriosPartidos);
-        List<Emparejamiento> cuartos = Eliminatorias.armarCuartos(partidosGrupos);
-        List<Partido> eliminatorias = Eliminatorias.simularEliminatorias(cuartos, datos.equipos(), aleatoriosPartidos);
+        List<ResultadoTorneo> torneos = IntStream.range(0, cantidadTorneos)
+                .mapToObj(i -> Torneo.simularTorneo(datos, aleatoriosPartidos, aleatoriosApuestas))
+                .toList();
 
-        List<Partido> todos = new ArrayList<>(partidosGrupos);
-        todos.addAll(eliminatorias);
+        ResumenVarios resumen = null;
+        if (cantidadTorneos > 1) {
+            Map<Integer, Long> campeones = torneos.stream()
+                    .collect(Collectors.groupingBy(ResultadoTorneo::campeon, TreeMap::new, Collectors.counting()));
+            resumen = new ResumenVarios(cantidadTorneos, campeones);
+        }
 
-        List<StatJugador> statsJugadores = Estadisticas.estadisticasJugadores(datos.equipos(), todos);
-        List<StatEquipo> statsEquipos = Estadisticas.estadisticasEquipos(todos);
-        Premios premios = CalculoPremios.calcularPremios(statsJugadores, statsEquipos);
+        ResultadoTorneo primero = torneos.get(0);
+        Exportar.exportar(primero, resumen, rutaSalida);
 
-        ResultadoApuestas apuestas = Apuestas.simularApuestas(
-                datos.apostadores(), todos, datos.equipos(), aleatoriosApuestas);
-
-        System.out.println(premios);
-        System.out.println("Apuestas hechas: " + apuestas.apuestas().size());
-        apuestas.saldos().forEach(s -> System.out.println(
-                "Apostador " + s.apostador() + ": " + s.historial().get(0)
-                        + " → " + s.historial().get(s.historial().size() - 1)));
-        System.out.println("Mejor apostador: " + apuestas.mejorApostador());
+        System.out.println("Torneos simulados: " + cantidadTorneos
+                + " | Campeón del primero: " + primero.campeon()
+                + " | Archivo: " + rutaSalida);
     }
 }
