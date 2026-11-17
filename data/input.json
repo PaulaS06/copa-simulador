@@ -1,0 +1,1550 @@
+{
+  "equipos": [
+    {
+      "id": 1,
+      "nombre": "Argentina",
+      "grupo": "A",
+      "jugadores": [
+        {
+          "id": 101,
+          "nombre": "ARG POR 1",
+          "posicion": "POR",
+          "ataque": 37,
+          "defensa": 87,
+          "disciplina": 87
+        },
+        {
+          "id": 102,
+          "nombre": "ARG DEF 2",
+          "posicion": "DEF",
+          "ataque": 59,
+          "defensa": 86,
+          "disciplina": 76
+        },
+        {
+          "id": 103,
+          "nombre": "ARG DEF 3",
+          "posicion": "DEF",
+          "ataque": 59,
+          "defensa": 91,
+          "disciplina": 65
+        },
+        {
+          "id": 104,
+          "nombre": "ARG DEF 4",
+          "posicion": "DEF",
+          "ataque": 65,
+          "defensa": 90,
+          "disciplina": 72
+        },
+        {
+          "id": 105,
+          "nombre": "ARG DEF 5",
+          "posicion": "DEF",
+          "ataque": 61,
+          "defensa": 91,
+          "disciplina": 89
+        },
+        {
+          "id": 106,
+          "nombre": "ARG MED 6",
+          "posicion": "MED",
+          "ataque": 78,
+          "defensa": 74,
+          "disciplina": 84
+        },
+        {
+          "id": 107,
+          "nombre": "ARG MED 7",
+          "posicion": "MED",
+          "ataque": 80,
+          "defensa": 78,
+          "disciplina": 54
+        },
+        {
+          "id": 108,
+          "nombre": "ARG MED 8",
+          "posicion": "MED",
+          "ataque": 78,
+          "defensa": 77,
+          "disciplina": 95
+        },
+        {
+          "id": 109,
+          "nombre": "ARG DEL 9",
+          "posicion": "DEL",
+          "ataque": 95,
+          "defensa": 42,
+          "disciplina": 84
+        },
+        {
+          "id": 110,
+          "nombre": "ARG DEL 10",
+          "posicion": "DEL",
+          "ataque": 88,
+          "defensa": 46,
+          "disciplina": 53
+        },
+        {
+          "id": 111,
+          "nombre": "ARG DEL 11",
+          "posicion": "DEL",
+          "ataque": 90,
+          "defensa": 50,
+          "disciplina": 76
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Perú",
+      "grupo": "A",
+      "jugadores": [
+        {
+          "id": 201,
+          "nombre": "PER POR 1",
+          "posicion": "POR",
+          "ataque": 24,
+          "defensa": 73,
+          "disciplina": 58
+        },
+        {
+          "id": 202,
+          "nombre": "PER DEF 2",
+          "posicion": "DEF",
+          "ataque": 47,
+          "defensa": 76,
+          "disciplina": 71
+        },
+        {
+          "id": 203,
+          "nombre": "PER DEF 3",
+          "posicion": "DEF",
+          "ataque": 47,
+          "defensa": 73,
+          "disciplina": 70
+        },
+        {
+          "id": 204,
+          "nombre": "PER DEF 4",
+          "posicion": "DEF",
+          "ataque": 48,
+          "defensa": 76,
+          "disciplina": 70
+        },
+        {
+          "id": 205,
+          "nombre": "PER DEF 5",
+          "posicion": "DEF",
+          "ataque": 51,
+          "defensa": 73,
+          "disciplina": 76
+        },
+        {
+          "id": 206,
+          "nombre": "PER MED 6",
+          "posicion": "MED",
+          "ataque": 65,
+          "defensa": 60,
+          "disciplina": 52
+        },
+        {
+          "id": 207,
+          "nombre": "PER MED 7",
+          "posicion": "MED",
+          "ataque": 65,
+          "defensa": 57,
+          "disciplina": 66
+        },
+        {
+          "id": 208,
+          "nombre": "PER MED 8",
+          "posicion": "MED",
+          "ataque": 70,
+          "defensa": 62,
+          "disciplina": 86
+        },
+        {
+          "id": 209,
+          "nombre": "PER DEL 9",
+          "posicion": "DEL",
+          "ataque": 78,
+          "defensa": 36,
+          "disciplina": 57
+        },
+        {
+          "id": 210,
+          "nombre": "PER DEL 10",
+          "posicion": "DEL",
+          "ataque": 77,
+          "defensa": 37,
+          "disciplina": 88
+        },
+        {
+          "id": 211,
+          "nombre": "PER DEL 11",
+          "posicion": "DEL",
+          "ataque": 75,
+          "defensa": 30,
+          "disciplina": 79
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Chile",
+      "grupo": "A",
+      "jugadores": [
+        {
+          "id": 301,
+          "nombre": "CHI POR 1",
+          "posicion": "POR",
+          "ataque": 23,
+          "defensa": 75,
+          "disciplina": 62
+        },
+        {
+          "id": 302,
+          "nombre": "CHI DEF 2",
+          "posicion": "DEF",
+          "ataque": 48,
+          "defensa": 78,
+          "disciplina": 88
+        },
+        {
+          "id": 303,
+          "nombre": "CHI DEF 3",
+          "posicion": "DEF",
+          "ataque": 53,
+          "defensa": 73,
+          "disciplina": 66
+        },
+        {
+          "id": 304,
+          "nombre": "CHI DEF 4",
+          "posicion": "DEF",
+          "ataque": 49,
+          "defensa": 80,
+          "disciplina": 71
+        },
+        {
+          "id": 305,
+          "nombre": "CHI DEF 5",
+          "posicion": "DEF",
+          "ataque": 48,
+          "defensa": 78,
+          "disciplina": 60
+        },
+        {
+          "id": 306,
+          "nombre": "CHI MED 6",
+          "posicion": "MED",
+          "ataque": 73,
+          "defensa": 60,
+          "disciplina": 71
+        },
+        {
+          "id": 307,
+          "nombre": "CHI MED 7",
+          "posicion": "MED",
+          "ataque": 66,
+          "defensa": 67,
+          "disciplina": 93
+        },
+        {
+          "id": 308,
+          "nombre": "CHI MED 8",
+          "posicion": "MED",
+          "ataque": 64,
+          "defensa": 59,
+          "disciplina": 61
+        },
+        {
+          "id": 309,
+          "nombre": "CHI DEL 9",
+          "posicion": "DEL",
+          "ataque": 73,
+          "defensa": 30,
+          "disciplina": 78
+        },
+        {
+          "id": 310,
+          "nombre": "CHI DEL 10",
+          "posicion": "DEL",
+          "ataque": 76,
+          "defensa": 33,
+          "disciplina": 64
+        },
+        {
+          "id": 311,
+          "nombre": "CHI DEL 11",
+          "posicion": "DEL",
+          "ataque": 74,
+          "defensa": 31,
+          "disciplina": 68
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Canadá",
+      "grupo": "A",
+      "jugadores": [
+        {
+          "id": 401,
+          "nombre": "CAN POR 1",
+          "posicion": "POR",
+          "ataque": 19,
+          "defensa": 78,
+          "disciplina": 88
+        },
+        {
+          "id": 402,
+          "nombre": "CAN DEF 2",
+          "posicion": "DEF",
+          "ataque": 45,
+          "defensa": 76,
+          "disciplina": 83
+        },
+        {
+          "id": 403,
+          "nombre": "CAN DEF 3",
+          "posicion": "DEF",
+          "ataque": 47,
+          "defensa": 79,
+          "disciplina": 76
+        },
+        {
+          "id": 404,
+          "nombre": "CAN DEF 4",
+          "posicion": "DEF",
+          "ataque": 44,
+          "defensa": 70,
+          "disciplina": 69
+        },
+        {
+          "id": 405,
+          "nombre": "CAN DEF 5",
+          "posicion": "DEF",
+          "ataque": 45,
+          "defensa": 73,
+          "disciplina": 58
+        },
+        {
+          "id": 406,
+          "nombre": "CAN MED 6",
+          "posicion": "MED",
+          "ataque": 70,
+          "defensa": 66,
+          "disciplina": 66
+        },
+        {
+          "id": 407,
+          "nombre": "CAN MED 7",
+          "posicion": "MED",
+          "ataque": 69,
+          "defensa": 57,
+          "disciplina": 81
+        },
+        {
+          "id": 408,
+          "nombre": "CAN MED 8",
+          "posicion": "MED",
+          "ataque": 64,
+          "defensa": 59,
+          "disciplina": 74
+        },
+        {
+          "id": 409,
+          "nombre": "CAN DEL 9",
+          "posicion": "DEL",
+          "ataque": 73,
+          "defensa": 34,
+          "disciplina": 64
+        },
+        {
+          "id": 410,
+          "nombre": "CAN DEL 10",
+          "posicion": "DEL",
+          "ataque": 76,
+          "defensa": 31,
+          "disciplina": 94
+        },
+        {
+          "id": 411,
+          "nombre": "CAN DEL 11",
+          "posicion": "DEL",
+          "ataque": 71,
+          "defensa": 35,
+          "disciplina": 93
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "México",
+      "grupo": "B",
+      "jugadores": [
+        {
+          "id": 501,
+          "nombre": "MEX POR 1",
+          "posicion": "POR",
+          "ataque": 29,
+          "defensa": 82,
+          "disciplina": 90
+        },
+        {
+          "id": 502,
+          "nombre": "MEX DEF 2",
+          "posicion": "DEF",
+          "ataque": 47,
+          "defensa": 75,
+          "disciplina": 64
+        },
+        {
+          "id": 503,
+          "nombre": "MEX DEF 3",
+          "posicion": "DEF",
+          "ataque": 46,
+          "defensa": 82,
+          "disciplina": 58
+        },
+        {
+          "id": 504,
+          "nombre": "MEX DEF 4",
+          "posicion": "DEF",
+          "ataque": 49,
+          "defensa": 84,
+          "disciplina": 89
+        },
+        {
+          "id": 505,
+          "nombre": "MEX DEF 5",
+          "posicion": "DEF",
+          "ataque": 47,
+          "defensa": 82,
+          "disciplina": 61
+        },
+        {
+          "id": 506,
+          "nombre": "MEX MED 6",
+          "posicion": "MED",
+          "ataque": 69,
+          "defensa": 68,
+          "disciplina": 87
+        },
+        {
+          "id": 507,
+          "nombre": "MEX MED 7",
+          "posicion": "MED",
+          "ataque": 68,
+          "defensa": 63,
+          "disciplina": 55
+        },
+        {
+          "id": 508,
+          "nombre": "MEX MED 8",
+          "posicion": "MED",
+          "ataque": 68,
+          "defensa": 70,
+          "disciplina": 56
+        },
+        {
+          "id": 509,
+          "nombre": "MEX DEL 9",
+          "posicion": "DEL",
+          "ataque": 85,
+          "defensa": 39,
+          "disciplina": 88
+        },
+        {
+          "id": 510,
+          "nombre": "MEX DEL 10",
+          "posicion": "DEL",
+          "ataque": 86,
+          "defensa": 31,
+          "disciplina": 88
+        },
+        {
+          "id": 511,
+          "nombre": "MEX DEL 11",
+          "posicion": "DEL",
+          "ataque": 77,
+          "defensa": 39,
+          "disciplina": 61
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Ecuador",
+      "grupo": "B",
+      "jugadores": [
+        {
+          "id": 601,
+          "nombre": "ECU POR 1",
+          "posicion": "POR",
+          "ataque": 29,
+          "defensa": 81,
+          "disciplina": 50
+        },
+        {
+          "id": 602,
+          "nombre": "ECU DEF 2",
+          "posicion": "DEF",
+          "ataque": 47,
+          "defensa": 78,
+          "disciplina": 51
+        },
+        {
+          "id": 603,
+          "nombre": "ECU DEF 3",
+          "posicion": "DEF",
+          "ataque": 48,
+          "defensa": 74,
+          "disciplina": 56
+        },
+        {
+          "id": 604,
+          "nombre": "ECU DEF 4",
+          "posicion": "DEF",
+          "ataque": 56,
+          "defensa": 83,
+          "disciplina": 93
+        },
+        {
+          "id": 605,
+          "nombre": "ECU DEF 5",
+          "posicion": "DEF",
+          "ataque": 55,
+          "defensa": 77,
+          "disciplina": 87
+        },
+        {
+          "id": 606,
+          "nombre": "ECU MED 6",
+          "posicion": "MED",
+          "ataque": 69,
+          "defensa": 71,
+          "disciplina": 62
+        },
+        {
+          "id": 607,
+          "nombre": "ECU MED 7",
+          "posicion": "MED",
+          "ataque": 73,
+          "defensa": 63,
+          "disciplina": 80
+        },
+        {
+          "id": 608,
+          "nombre": "ECU MED 8",
+          "posicion": "MED",
+          "ataque": 71,
+          "defensa": 65,
+          "disciplina": 79
+        },
+        {
+          "id": 609,
+          "nombre": "ECU DEL 9",
+          "posicion": "DEL",
+          "ataque": 86,
+          "defensa": 38,
+          "disciplina": 95
+        },
+        {
+          "id": 610,
+          "nombre": "ECU DEL 10",
+          "posicion": "DEL",
+          "ataque": 79,
+          "defensa": 37,
+          "disciplina": 87
+        },
+        {
+          "id": 611,
+          "nombre": "ECU DEL 11",
+          "posicion": "DEL",
+          "ataque": 83,
+          "defensa": 37,
+          "disciplina": 88
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Venezuela",
+      "grupo": "B",
+      "jugadores": [
+        {
+          "id": 701,
+          "nombre": "VEN POR 1",
+          "posicion": "POR",
+          "ataque": 18,
+          "defensa": 74,
+          "disciplina": 60
+        },
+        {
+          "id": 702,
+          "nombre": "VEN DEF 2",
+          "posicion": "DEF",
+          "ataque": 45,
+          "defensa": 75,
+          "disciplina": 62
+        },
+        {
+          "id": 703,
+          "nombre": "VEN DEF 3",
+          "posicion": "DEF",
+          "ataque": 43,
+          "defensa": 74,
+          "disciplina": 79
+        },
+        {
+          "id": 704,
+          "nombre": "VEN DEF 4",
+          "posicion": "DEF",
+          "ataque": 51,
+          "defensa": 69,
+          "disciplina": 57
+        },
+        {
+          "id": 705,
+          "nombre": "VEN DEF 5",
+          "posicion": "DEF",
+          "ataque": 46,
+          "defensa": 79,
+          "disciplina": 50
+        },
+        {
+          "id": 706,
+          "nombre": "VEN MED 6",
+          "posicion": "MED",
+          "ataque": 64,
+          "defensa": 64,
+          "disciplina": 76
+        },
+        {
+          "id": 707,
+          "nombre": "VEN MED 7",
+          "posicion": "MED",
+          "ataque": 71,
+          "defensa": 56,
+          "disciplina": 63
+        },
+        {
+          "id": 708,
+          "nombre": "VEN MED 8",
+          "posicion": "MED",
+          "ataque": 70,
+          "defensa": 63,
+          "disciplina": 85
+        },
+        {
+          "id": 709,
+          "nombre": "VEN DEL 9",
+          "posicion": "DEL",
+          "ataque": 78,
+          "defensa": 34,
+          "disciplina": 53
+        },
+        {
+          "id": 710,
+          "nombre": "VEN DEL 10",
+          "posicion": "DEL",
+          "ataque": 77,
+          "defensa": 31,
+          "disciplina": 50
+        },
+        {
+          "id": 711,
+          "nombre": "VEN DEL 11",
+          "posicion": "DEL",
+          "ataque": 79,
+          "defensa": 31,
+          "disciplina": 85
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Jamaica",
+      "grupo": "B",
+      "jugadores": [
+        {
+          "id": 801,
+          "nombre": "JAM POR 1",
+          "posicion": "POR",
+          "ataque": 14,
+          "defensa": 75,
+          "disciplina": 60
+        },
+        {
+          "id": 802,
+          "nombre": "JAM DEF 2",
+          "posicion": "DEF",
+          "ataque": 38,
+          "defensa": 72,
+          "disciplina": 56
+        },
+        {
+          "id": 803,
+          "nombre": "JAM DEF 3",
+          "posicion": "DEF",
+          "ataque": 41,
+          "defensa": 64,
+          "disciplina": 58
+        },
+        {
+          "id": 804,
+          "nombre": "JAM DEF 4",
+          "posicion": "DEF",
+          "ataque": 37,
+          "defensa": 63,
+          "disciplina": 71
+        },
+        {
+          "id": 805,
+          "nombre": "JAM DEF 5",
+          "posicion": "DEF",
+          "ataque": 39,
+          "defensa": 67,
+          "disciplina": 81
+        },
+        {
+          "id": 806,
+          "nombre": "JAM MED 6",
+          "posicion": "MED",
+          "ataque": 57,
+          "defensa": 55,
+          "disciplina": 79
+        },
+        {
+          "id": 807,
+          "nombre": "JAM MED 7",
+          "posicion": "MED",
+          "ataque": 61,
+          "defensa": 57,
+          "disciplina": 89
+        },
+        {
+          "id": 808,
+          "nombre": "JAM MED 8",
+          "posicion": "MED",
+          "ataque": 60,
+          "defensa": 52,
+          "disciplina": 52
+        },
+        {
+          "id": 809,
+          "nombre": "JAM DEL 9",
+          "posicion": "DEL",
+          "ataque": 66,
+          "defensa": 21,
+          "disciplina": 73
+        },
+        {
+          "id": 810,
+          "nombre": "JAM DEL 10",
+          "posicion": "DEL",
+          "ataque": 71,
+          "defensa": 30,
+          "disciplina": 61
+        },
+        {
+          "id": 811,
+          "nombre": "JAM DEL 11",
+          "posicion": "DEL",
+          "ataque": 73,
+          "defensa": 21,
+          "disciplina": 53
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Estados Unidos",
+      "grupo": "C",
+      "jugadores": [
+        {
+          "id": 901,
+          "nombre": "USA POR 1",
+          "posicion": "POR",
+          "ataque": 31,
+          "defensa": 82,
+          "disciplina": 51
+        },
+        {
+          "id": 902,
+          "nombre": "USA DEF 2",
+          "posicion": "DEF",
+          "ataque": 50,
+          "defensa": 77,
+          "disciplina": 57
+        },
+        {
+          "id": 903,
+          "nombre": "USA DEF 3",
+          "posicion": "DEF",
+          "ataque": 51,
+          "defensa": 82,
+          "disciplina": 86
+        },
+        {
+          "id": 904,
+          "nombre": "USA DEF 4",
+          "posicion": "DEF",
+          "ataque": 48,
+          "defensa": 77,
+          "disciplina": 86
+        },
+        {
+          "id": 905,
+          "nombre": "USA DEF 5",
+          "posicion": "DEF",
+          "ataque": 55,
+          "defensa": 75,
+          "disciplina": 77
+        },
+        {
+          "id": 906,
+          "nombre": "USA MED 6",
+          "posicion": "MED",
+          "ataque": 67,
+          "defensa": 70,
+          "disciplina": 95
+        },
+        {
+          "id": 907,
+          "nombre": "USA MED 7",
+          "posicion": "MED",
+          "ataque": 70,
+          "defensa": 67,
+          "disciplina": 85
+        },
+        {
+          "id": 908,
+          "nombre": "USA MED 8",
+          "posicion": "MED",
+          "ataque": 68,
+          "defensa": 64,
+          "disciplina": 50
+        },
+        {
+          "id": 909,
+          "nombre": "USA DEL 9",
+          "posicion": "DEL",
+          "ataque": 84,
+          "defensa": 32,
+          "disciplina": 62
+        },
+        {
+          "id": 910,
+          "nombre": "USA DEL 10",
+          "posicion": "DEL",
+          "ataque": 82,
+          "defensa": 39,
+          "disciplina": 86
+        },
+        {
+          "id": 911,
+          "nombre": "USA DEL 11",
+          "posicion": "DEL",
+          "ataque": 82,
+          "defensa": 38,
+          "disciplina": 86
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Uruguay",
+      "grupo": "C",
+      "jugadores": [
+        {
+          "id": 1001,
+          "nombre": "URU POR 1",
+          "posicion": "POR",
+          "ataque": 29,
+          "defensa": 92,
+          "disciplina": 65
+        },
+        {
+          "id": 1002,
+          "nombre": "URU DEF 2",
+          "posicion": "DEF",
+          "ataque": 60,
+          "defensa": 84,
+          "disciplina": 67
+        },
+        {
+          "id": 1003,
+          "nombre": "URU DEF 3",
+          "posicion": "DEF",
+          "ataque": 61,
+          "defensa": 85,
+          "disciplina": 78
+        },
+        {
+          "id": 1004,
+          "nombre": "URU DEF 4",
+          "posicion": "DEF",
+          "ataque": 62,
+          "defensa": 81,
+          "disciplina": 75
+        },
+        {
+          "id": 1005,
+          "nombre": "URU DEF 5",
+          "posicion": "DEF",
+          "ataque": 58,
+          "defensa": 84,
+          "disciplina": 70
+        },
+        {
+          "id": 1006,
+          "nombre": "URU MED 6",
+          "posicion": "MED",
+          "ataque": 80,
+          "defensa": 75,
+          "disciplina": 64
+        },
+        {
+          "id": 1007,
+          "nombre": "URU MED 7",
+          "posicion": "MED",
+          "ataque": 75,
+          "defensa": 72,
+          "disciplina": 64
+        },
+        {
+          "id": 1008,
+          "nombre": "URU MED 8",
+          "posicion": "MED",
+          "ataque": 78,
+          "defensa": 74,
+          "disciplina": 86
+        },
+        {
+          "id": 1009,
+          "nombre": "URU DEL 9",
+          "posicion": "DEL",
+          "ataque": 86,
+          "defensa": 41,
+          "disciplina": 93
+        },
+        {
+          "id": 1010,
+          "nombre": "URU DEL 10",
+          "posicion": "DEL",
+          "ataque": 92,
+          "defensa": 40,
+          "disciplina": 79
+        },
+        {
+          "id": 1011,
+          "nombre": "URU DEL 11",
+          "posicion": "DEL",
+          "ataque": 92,
+          "defensa": 45,
+          "disciplina": 53
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Panamá",
+      "grupo": "C",
+      "jugadores": [
+        {
+          "id": 1101,
+          "nombre": "PAN POR 1",
+          "posicion": "POR",
+          "ataque": 17,
+          "defensa": 74,
+          "disciplina": 91
+        },
+        {
+          "id": 1102,
+          "nombre": "PAN DEF 2",
+          "posicion": "DEF",
+          "ataque": 41,
+          "defensa": 70,
+          "disciplina": 76
+        },
+        {
+          "id": 1103,
+          "nombre": "PAN DEF 3",
+          "posicion": "DEF",
+          "ataque": 46,
+          "defensa": 68,
+          "disciplina": 91
+        },
+        {
+          "id": 1104,
+          "nombre": "PAN DEF 4",
+          "posicion": "DEF",
+          "ataque": 43,
+          "defensa": 70,
+          "disciplina": 94
+        },
+        {
+          "id": 1105,
+          "nombre": "PAN DEF 5",
+          "posicion": "DEF",
+          "ataque": 46,
+          "defensa": 68,
+          "disciplina": 55
+        },
+        {
+          "id": 1106,
+          "nombre": "PAN MED 6",
+          "posicion": "MED",
+          "ataque": 66,
+          "defensa": 56,
+          "disciplina": 79
+        },
+        {
+          "id": 1107,
+          "nombre": "PAN MED 7",
+          "posicion": "MED",
+          "ataque": 67,
+          "defensa": 57,
+          "disciplina": 68
+        },
+        {
+          "id": 1108,
+          "nombre": "PAN MED 8",
+          "posicion": "MED",
+          "ataque": 61,
+          "defensa": 63,
+          "disciplina": 83
+        },
+        {
+          "id": 1109,
+          "nombre": "PAN DEL 9",
+          "posicion": "DEL",
+          "ataque": 74,
+          "defensa": 27,
+          "disciplina": 61
+        },
+        {
+          "id": 1110,
+          "nombre": "PAN DEL 10",
+          "posicion": "DEL",
+          "ataque": 75,
+          "defensa": 28,
+          "disciplina": 51
+        },
+        {
+          "id": 1111,
+          "nombre": "PAN DEL 11",
+          "posicion": "DEL",
+          "ataque": 77,
+          "defensa": 33,
+          "disciplina": 74
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Bolivia",
+      "grupo": "C",
+      "jugadores": [
+        {
+          "id": 1201,
+          "nombre": "BOL POR 1",
+          "posicion": "POR",
+          "ataque": 10,
+          "defensa": 66,
+          "disciplina": 56
+        },
+        {
+          "id": 1202,
+          "nombre": "BOL DEF 2",
+          "posicion": "DEF",
+          "ataque": 40,
+          "defensa": 71,
+          "disciplina": 70
+        },
+        {
+          "id": 1203,
+          "nombre": "BOL DEF 3",
+          "posicion": "DEF",
+          "ataque": 37,
+          "defensa": 63,
+          "disciplina": 87
+        },
+        {
+          "id": 1204,
+          "nombre": "BOL DEF 4",
+          "posicion": "DEF",
+          "ataque": 38,
+          "defensa": 62,
+          "disciplina": 90
+        },
+        {
+          "id": 1205,
+          "nombre": "BOL DEF 5",
+          "posicion": "DEF",
+          "ataque": 38,
+          "defensa": 72,
+          "disciplina": 83
+        },
+        {
+          "id": 1206,
+          "nombre": "BOL MED 6",
+          "posicion": "MED",
+          "ataque": 57,
+          "defensa": 55,
+          "disciplina": 60
+        },
+        {
+          "id": 1207,
+          "nombre": "BOL MED 7",
+          "posicion": "MED",
+          "ataque": 57,
+          "defensa": 56,
+          "disciplina": 67
+        },
+        {
+          "id": 1208,
+          "nombre": "BOL MED 8",
+          "posicion": "MED",
+          "ataque": 55,
+          "defensa": 56,
+          "disciplina": 57
+        },
+        {
+          "id": 1209,
+          "nombre": "BOL DEL 9",
+          "posicion": "DEL",
+          "ataque": 65,
+          "defensa": 28,
+          "disciplina": 67
+        },
+        {
+          "id": 1210,
+          "nombre": "BOL DEL 10",
+          "posicion": "DEL",
+          "ataque": 66,
+          "defensa": 25,
+          "disciplina": 87
+        },
+        {
+          "id": 1211,
+          "nombre": "BOL DEL 11",
+          "posicion": "DEL",
+          "ataque": 74,
+          "defensa": 20,
+          "disciplina": 64
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Brasil",
+      "grupo": "D",
+      "jugadores": [
+        {
+          "id": 1301,
+          "nombre": "BRA POR 1",
+          "posicion": "POR",
+          "ataque": 37,
+          "defensa": 86,
+          "disciplina": 60
+        },
+        {
+          "id": 1302,
+          "nombre": "BRA DEF 2",
+          "posicion": "DEF",
+          "ataque": 57,
+          "defensa": 91,
+          "disciplina": 58
+        },
+        {
+          "id": 1303,
+          "nombre": "BRA DEF 3",
+          "posicion": "DEF",
+          "ataque": 59,
+          "defensa": 91,
+          "disciplina": 56
+        },
+        {
+          "id": 1304,
+          "nombre": "BRA DEF 4",
+          "posicion": "DEF",
+          "ataque": 55,
+          "defensa": 86,
+          "disciplina": 76
+        },
+        {
+          "id": 1305,
+          "nombre": "BRA DEF 5",
+          "posicion": "DEF",
+          "ataque": 58,
+          "defensa": 91,
+          "disciplina": 94
+        },
+        {
+          "id": 1306,
+          "nombre": "BRA MED 6",
+          "posicion": "MED",
+          "ataque": 78,
+          "defensa": 76,
+          "disciplina": 65
+        },
+        {
+          "id": 1307,
+          "nombre": "BRA MED 7",
+          "posicion": "MED",
+          "ataque": 73,
+          "defensa": 77,
+          "disciplina": 67
+        },
+        {
+          "id": 1308,
+          "nombre": "BRA MED 8",
+          "posicion": "MED",
+          "ataque": 79,
+          "defensa": 70,
+          "disciplina": 86
+        },
+        {
+          "id": 1309,
+          "nombre": "BRA DEL 9",
+          "posicion": "DEL",
+          "ataque": 87,
+          "defensa": 40,
+          "disciplina": 82
+        },
+        {
+          "id": 1310,
+          "nombre": "BRA DEL 10",
+          "posicion": "DEL",
+          "ataque": 87,
+          "defensa": 41,
+          "disciplina": 85
+        },
+        {
+          "id": 1311,
+          "nombre": "BRA DEL 11",
+          "posicion": "DEL",
+          "ataque": 85,
+          "defensa": 44,
+          "disciplina": 84
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "nombre": "Colombia",
+      "grupo": "D",
+      "jugadores": [
+        {
+          "id": 1401,
+          "nombre": "COL POR 1",
+          "posicion": "POR",
+          "ataque": 29,
+          "defensa": 83,
+          "disciplina": 58
+        },
+        {
+          "id": 1402,
+          "nombre": "COL DEF 2",
+          "posicion": "DEF",
+          "ataque": 61,
+          "defensa": 82,
+          "disciplina": 66
+        },
+        {
+          "id": 1403,
+          "nombre": "COL DEF 3",
+          "posicion": "DEF",
+          "ataque": 51,
+          "defensa": 89,
+          "disciplina": 89
+        },
+        {
+          "id": 1404,
+          "nombre": "COL DEF 4",
+          "posicion": "DEF",
+          "ataque": 61,
+          "defensa": 80,
+          "disciplina": 77
+        },
+        {
+          "id": 1405,
+          "nombre": "COL DEF 5",
+          "posicion": "DEF",
+          "ataque": 59,
+          "defensa": 85,
+          "disciplina": 52
+        },
+        {
+          "id": 1406,
+          "nombre": "COL MED 6",
+          "posicion": "MED",
+          "ataque": 78,
+          "defensa": 68,
+          "disciplina": 67
+        },
+        {
+          "id": 1407,
+          "nombre": "COL MED 7",
+          "posicion": "MED",
+          "ataque": 76,
+          "defensa": 73,
+          "disciplina": 72
+        },
+        {
+          "id": 1408,
+          "nombre": "COL MED 8",
+          "posicion": "MED",
+          "ataque": 75,
+          "defensa": 73,
+          "disciplina": 93
+        },
+        {
+          "id": 1409,
+          "nombre": "COL DEL 9",
+          "posicion": "DEL",
+          "ataque": 90,
+          "defensa": 43,
+          "disciplina": 85
+        },
+        {
+          "id": 1410,
+          "nombre": "COL DEL 10",
+          "posicion": "DEL",
+          "ataque": 91,
+          "defensa": 36,
+          "disciplina": 93
+        },
+        {
+          "id": 1411,
+          "nombre": "COL DEL 11",
+          "posicion": "DEL",
+          "ataque": 85,
+          "defensa": 38,
+          "disciplina": 74
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "nombre": "Paraguay",
+      "grupo": "D",
+      "jugadores": [
+        {
+          "id": 1501,
+          "nombre": "PAR POR 1",
+          "posicion": "POR",
+          "ataque": 27,
+          "defensa": 79,
+          "disciplina": 90
+        },
+        {
+          "id": 1502,
+          "nombre": "PAR DEF 2",
+          "posicion": "DEF",
+          "ataque": 47,
+          "defensa": 78,
+          "disciplina": 81
+        },
+        {
+          "id": 1503,
+          "nombre": "PAR DEF 3",
+          "posicion": "DEF",
+          "ataque": 47,
+          "defensa": 72,
+          "disciplina": 54
+        },
+        {
+          "id": 1504,
+          "nombre": "PAR DEF 4",
+          "posicion": "DEF",
+          "ataque": 50,
+          "defensa": 78,
+          "disciplina": 67
+        },
+        {
+          "id": 1505,
+          "nombre": "PAR DEF 5",
+          "posicion": "DEF",
+          "ataque": 45,
+          "defensa": 72,
+          "disciplina": 78
+        },
+        {
+          "id": 1506,
+          "nombre": "PAR MED 6",
+          "posicion": "MED",
+          "ataque": 69,
+          "defensa": 62,
+          "disciplina": 89
+        },
+        {
+          "id": 1507,
+          "nombre": "PAR MED 7",
+          "posicion": "MED",
+          "ataque": 62,
+          "defensa": 59,
+          "disciplina": 57
+        },
+        {
+          "id": 1508,
+          "nombre": "PAR MED 8",
+          "posicion": "MED",
+          "ataque": 68,
+          "defensa": 57,
+          "disciplina": 68
+        },
+        {
+          "id": 1509,
+          "nombre": "PAR DEL 9",
+          "posicion": "DEL",
+          "ataque": 82,
+          "defensa": 28,
+          "disciplina": 95
+        },
+        {
+          "id": 1510,
+          "nombre": "PAR DEL 10",
+          "posicion": "DEL",
+          "ataque": 73,
+          "defensa": 37,
+          "disciplina": 80
+        },
+        {
+          "id": 1511,
+          "nombre": "PAR DEL 11",
+          "posicion": "DEL",
+          "ataque": 79,
+          "defensa": 30,
+          "disciplina": 83
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "nombre": "Costa Rica",
+      "grupo": "D",
+      "jugadores": [
+        {
+          "id": 1601,
+          "nombre": "CRC POR 1",
+          "posicion": "POR",
+          "ataque": 20,
+          "defensa": 77,
+          "disciplina": 64
+        },
+        {
+          "id": 1602,
+          "nombre": "CRC DEF 2",
+          "posicion": "DEF",
+          "ataque": 47,
+          "defensa": 75,
+          "disciplina": 92
+        },
+        {
+          "id": 1603,
+          "nombre": "CRC DEF 3",
+          "posicion": "DEF",
+          "ataque": 42,
+          "defensa": 75,
+          "disciplina": 82
+        },
+        {
+          "id": 1604,
+          "nombre": "CRC DEF 4",
+          "posicion": "DEF",
+          "ataque": 47,
+          "defensa": 69,
+          "disciplina": 81
+        },
+        {
+          "id": 1605,
+          "nombre": "CRC DEF 5",
+          "posicion": "DEF",
+          "ataque": 41,
+          "defensa": 74,
+          "disciplina": 53
+        },
+        {
+          "id": 1606,
+          "nombre": "CRC MED 6",
+          "posicion": "MED",
+          "ataque": 67,
+          "defensa": 55,
+          "disciplina": 93
+        },
+        {
+          "id": 1607,
+          "nombre": "CRC MED 7",
+          "posicion": "MED",
+          "ataque": 65,
+          "defensa": 59,
+          "disciplina": 95
+        },
+        {
+          "id": 1608,
+          "nombre": "CRC MED 8",
+          "posicion": "MED",
+          "ataque": 60,
+          "defensa": 56,
+          "disciplina": 91
+        },
+        {
+          "id": 1609,
+          "nombre": "CRC DEL 9",
+          "posicion": "DEL",
+          "ataque": 72,
+          "defensa": 26,
+          "disciplina": 71
+        },
+        {
+          "id": 1610,
+          "nombre": "CRC DEL 10",
+          "posicion": "DEL",
+          "ataque": 67,
+          "defensa": 24,
+          "disciplina": 89
+        },
+        {
+          "id": 1611,
+          "nombre": "CRC DEL 11",
+          "posicion": "DEL",
+          "ataque": 75,
+          "defensa": 30,
+          "disciplina": 66
+        }
+      ]
+    }
+  ],
+  "apostadores": [
+    {
+      "id": 1,
+      "nombre": "Ana",
+      "estrategia": "favorito",
+      "saldo_inicial": 1000
+    },
+    {
+      "id": 2,
+      "nombre": "Bruno",
+      "estrategia": "sorpresa",
+      "saldo_inicial": 1000
+    },
+    {
+      "id": 3,
+      "nombre": "Camila",
+      "estrategia": "empate",
+      "saldo_inicial": 1000
+    },
+    {
+      "id": 4,
+      "nombre": "David",
+      "estrategia": "aleatoria",
+      "saldo_inicial": 1000
+    }
+  ]
+}
