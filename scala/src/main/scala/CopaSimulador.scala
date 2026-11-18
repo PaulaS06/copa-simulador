@@ -34,7 +34,7 @@ object CopaSimulador {
     val primero = torneos.head
     Json.exportar(primero, resumen, rutaSalida)
 
-    val milisegundos = (System.nanoTime() - inicio) / 1000000
+    val milisegundos = (System.nanoTime() - inicio) / 1000000.0
     println(s"Torneos simulados: $cantidadTorneos | Campeón del primero: ${primero.campeon} " +
       s"| Archivo: $rutaSalida | Tiempo: $milisegundos ms")
   }

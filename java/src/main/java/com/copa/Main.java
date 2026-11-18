@@ -26,6 +26,7 @@ public class Main {
         String rutaSalida = opciones.getOrDefault("out", "out/java.json");
         int cantidadTorneos = Integer.parseInt(opciones.getOrDefault("torneos", "1"));
 
+        long inicio = System.nanoTime();
         DatosTorneo datos = Datos.cargarDatos(rutaInput);
         Aleatorios aleatoriosPartidos = new Aleatorios(rutaAleatorios);
         Aleatorios aleatoriosApuestas = new Aleatorios(rutaAleatorios, 50_000);
@@ -43,9 +44,11 @@ public class Main {
 
         ResultadoTorneo primero = torneos.get(0);
         Exportar.exportar(primero, resumen, rutaSalida);
+        double milisegundos = (System.nanoTime() - inicio) / 1_000_000.0;
 
         System.out.println("Torneos simulados: " + cantidadTorneos
                 + " | Campeón del primero: " + primero.campeon()
-                + " | Archivo: " + rutaSalida);
+                + " | Archivo: " + rutaSalida
+                + " | Tiempo: " + milisegundos + " ms");
     }
 }

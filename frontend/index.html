@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16231b">
+  <title>Comparador | Copa América</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Comparador Copa América, inicio">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>Copa América <span class="brand-muted">2024</span></span>
+      </a>
+    </header>
+
+    <section class="intro">
+      <div class="intro-content">
+        <p class="eyebrow">SIMULACIÓN DE FÚTBOL</p>
+        <h1>Simulador de la final</h1>
+        <p class="intro-copy">
+          Compara Python, Java y Scala con los mismos datos del torneo.
+        </p>
+      </div>
+      <div class="hero-scene" aria-hidden="true">
+        <div class="field-box"></div>
+        <div class="field-circle"></div>
+        <div class="field-halfway"></div>
+        <div class="hero-flag"><i></i><i></i><i></i></div>
+        <span class="hero-ball">⚽</span>
+      </div>
+    </section>
+
+    <section class="controls panel" aria-labelledby="config-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CONFIGURACIÓN</p>
+          <h2 id="config-title">Prepara la simulación</h2>
+        </div>
+      </div>
+      <form id="benchmark-form">
+        <label>
+          <span>Torneos por ejecución</span>
+          <select name="torneos">
+            <option value="1">1 torneo</option>
+            <option value="10" selected>10 torneos</option>
+            <option value="100">100 torneos</option>
+            <option value="1000">1.000 torneos</option>
+          </select>
+        </label>
+        <label>
+          <span>Repeticiones</span>
+          <select name="repeticiones">
+            <option value="1">1 vez</option>
+            <option value="3" selected>3 veces</option>
+            <option value="5">5 veces</option>
+          </select>
+        </label>
+        <button id="run-button" class="run-button" type="submit">
+          <span id="button-label">▶ &nbsp; Iniciar comparación</span>
+          <span id="spinner" class="spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+      <p id="status" class="status" role="status" aria-live="polite">
+        Se usarán los mismos equipos y números aleatorios para los tres lenguajes.
+      </p>
+    </section>
+
+    <section class="results" aria-labelledby="results-title">
+      <div class="section-heading results-heading">
+        <div>
+          <p class="eyebrow">RESULTADOS</p>
+          <h2 id="results-title">Rendimiento por lenguaje</h2>
+        </div>
+      </div>
+
+      <div class="result-grid" id="result-grid">
+        <article class="result-card python-card" data-language="python">
+          <div class="card-top"><span class="language-icon">Py</span><span class="language-name">Python</span></div>
+          <p class="time-value" id="time-python">—<small> ms</small></p>
+          <p class="time-caption">mediana por ejecución</p>
+          <div class="bar-track"><span class="bar-fill" id="bar-python"></span></div>
+          <p class="winner-label" id="speed-python">Esperando prueba</p>
+          <section class="language-detail" aria-label="Detalle de tiempos Python">
+            <h3>Tiempo por repetición</h3>
+            <div class="run-chart" id="chart-python"><p class="chart-empty">Las mediciones aparecerán aquí</p></div>
+            <table class="run-table">
+              <thead><tr><th>Corrida</th><th>Tiempo</th></tr></thead>
+              <tbody id="table-python"><tr><td colspan="2">Sin datos todavía</td></tr></tbody>
+            </table>
+          </section>
+        </article>
+        <article class="result-card java-card" data-language="java">
+          <div class="card-top"><span class="language-icon">J</span><span class="language-name">Java</span></div>
+          <p class="time-value" id="time-java">—<small> ms</small></p>
+          <p class="time-caption">mediana por ejecución</p>
+          <div class="bar-track"><span class="bar-fill" id="bar-java"></span></div>
+          <p class="winner-label" id="speed-java">Esperando prueba</p>
+          <section class="language-detail" aria-label="Detalle de tiempos Java">
+            <h3>Tiempo por repetición</h3>
+            <div class="run-chart" id="chart-java"><p class="chart-empty">Las mediciones aparecerán aquí</p></div>
+            <table class="run-table">
+              <thead><tr><th>Corrida</th><th>Tiempo</th></tr></thead>
+              <tbody id="table-java"><tr><td colspan="2">Sin datos todavía</td></tr></tbody>
+            </table>
+          </section>
+        </article>
+        <article class="result-card scala-card" data-language="scala">
+          <div class="card-top"><span class="language-icon">Sc</span><span class="language-name">Scala</span></div>
+          <p class="time-value" id="time-scala">—<small> ms</small></p>
+          <p class="time-caption">mediana por ejecución</p>
+          <div class="bar-track"><span class="bar-fill" id="bar-scala"></span></div>
+          <p class="winner-label" id="speed-scala">Esperando prueba</p>
+          <section class="language-detail" aria-label="Detalle de tiempos Scala">
+            <h3>Tiempo por repetición</h3>
+            <div class="run-chart" id="chart-scala"><p class="chart-empty">Las mediciones aparecerán aquí</p></div>
+            <table class="run-table">
+              <thead><tr><th>Corrida</th><th>Tiempo</th></tr></thead>
+              <tbody id="table-scala"><tr><td colspan="2">Sin datos todavía</td></tr></tbody>
+            </table>
+          </section>
+        </article>
+      </div>
+
+      <div id="consistency" class="consistency" hidden></div>
+      <p id="champion" class="champion-note" hidden></p>
+    </section>
+
+    <section id="bracket-section" class="tournament-section" aria-labelledby="bracket-title" hidden>
+      <div class="section-heading tournament-heading">
+        <div>
+          <p class="eyebrow">EL CAMINO A LA FINAL</p>
+          <h2 id="bracket-title">La llave de eliminación</h2>
+        </div>
+        <span class="section-stamp">FASE FINAL</span>
+      </div>
+      <div id="bracket" class="bracket"></div>
+    </section>
+
+    <section id="standings-section" class="tournament-section" aria-labelledby="standings-title" hidden>
+      <div class="section-heading tournament-heading">
+        <div>
+          <p class="eyebrow">FASE DE GRUPOS</p>
+          <h2 id="standings-title">Así quedó la tabla</h2>
+        </div>
+        <span class="section-stamp">4 GRUPOS · 16 EQUIPOS</span>
+      </div>
+      <div id="standings" class="standings-grid"></div>
+    </section>
+
+    <footer class="footnote">
+      <span>Medición desde la carga de datos hasta la escritura del resultado.</span>
+      <span>Compilación y arranque de Python/JVM no incluidos.</span>
+    </footer>
+  </main>
+</body>
+</html>
