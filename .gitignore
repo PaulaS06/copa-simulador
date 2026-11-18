@@ -5,5 +5,6 @@ scala/target/
 scala/project/target/
 scala/.bsp/
 python/__pycache__/
+benchmark/__pycache__/
 data/aleatorios.txt
 .DS_Store
