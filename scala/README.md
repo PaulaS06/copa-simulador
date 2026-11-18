@@ -1,6 +1,7 @@
 # Simulador Copa América — Scala
 
-Scala 3.9.0 + sbt 2.1.0. Única dependencia: `ujson` (leer y escribir JSON).
+Scala 3.9.0 + sbt 2.1.0. Única dependencia: `ujson` (para leer `input.json`; el `output.json` se escribe con un escritor propio en `Json.scala`
+para que los decimales salgan como `4.0`, igual que en Java y Python).
 
 ## Correr en IntelliJ
 
