@@ -27,22 +27,24 @@ object Torneo {
 
   // ===================== RF: simular N torneos seguidos =====================
 
-  // Cada torneo sigue usando los números donde terminó el anterior
+  // Cada torneo sigue usando los números donde terminó el anterior.
+  // Solo se guarda el primer torneo completo (es el que se exporta); de los demás
+  // se cuenta el campeón y se descartan, para no acumular memoria.
+  // Devuelve el primer torneo y (id del equipo -> veces que fue campeón), ordenado por id.
   def simularVarios(n: Int, datos: DatosTorneo, rngPartidos: Aleatorios,
-                    rngApuestas: Aleatorios): List[ResultadoTorneo] = {
+                    rngApuestas: Aleatorios): (ResultadoTorneo, List[(Int, Int)]) = {
+    val (primero, rP1, rA1) = simularTorneo(datos, rngPartidos, rngApuestas)
+
     @tailrec
-    def correr(faltan: Int, rP: Aleatorios, rA: Aleatorios, hechos: Vector[ResultadoTorneo]): Vector[ResultadoTorneo] =
-      if (faltan == 0) hechos
+    def contar(faltan: Int, rP: Aleatorios, rA: Aleatorios, conteo: Map[Int, Int]): Map[Int, Int] =
+      if (faltan == 0) conteo
       else {
         val (resultado, nuevoP, nuevoA) = simularTorneo(datos, rP, rA)
-        correr(faltan - 1, nuevoP, nuevoA, hechos :+ resultado)
+        contar(faltan - 1, nuevoP, nuevoA,
+          conteo.updated(resultado.campeon, conteo.getOrElse(resultado.campeon, 0) + 1))
       }
-    correr(n, rngPartidos, rngApuestas, Vector()).toList
-  }
 
-  // id del equipo -> veces que fue campeón, ordenado por id
-  def contarCampeones(torneos: List[ResultadoTorneo]): List[(Int, Int)] =
-    torneos.groupBy(_.campeon).toList
-      .map { case (equipo, veces) => (equipo, veces.size) }
-      .sortBy(_._1)
+    val campeones = contar(n - 1, rP1, rA1, Map(primero.campeon -> 1))
+    (primero, campeones.toList.sortBy(_._1))
+  }
 }

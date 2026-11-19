@@ -26,12 +26,11 @@ object CopaSimulador {
     val aleatoriosPartidos = Aleatorios.desde(numeros, 0)
     val aleatoriosApuestas = Aleatorios.desde(numeros, 50000)
 
-    val torneos = Torneo.simularVarios(cantidadTorneos, datos, aleatoriosPartidos, aleatoriosApuestas)
+    val (primero, campeones) = Torneo.simularVarios(cantidadTorneos, datos, aleatoriosPartidos, aleatoriosApuestas)
     val resumen =
-      if (cantidadTorneos > 1) Some(Json.resumenVarios(cantidadTorneos, Torneo.contarCampeones(torneos)))
+      if (cantidadTorneos > 1) Some(Json.resumenVarios(cantidadTorneos, campeones))
       else None
 
-    val primero = torneos.head
     Json.exportar(primero, resumen, rutaSalida)
 
     val milisegundos = (System.nanoTime() - inicio) / 1000000.0
