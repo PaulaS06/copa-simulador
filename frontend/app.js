@@ -5,6 +5,7 @@ const consistency = document.querySelector("#consistency");
 const championNote = document.querySelector("#champion");
 const bracketSection = document.querySelector("#bracket-section");
 const standingsSection = document.querySelector("#standings-section");
+const rankingSection = document.querySelector("#ranking-section");
 const languageIds = ["python", "java", "scala"];
 
 function mostrarError(mensaje) {
@@ -124,6 +125,95 @@ function mostrarTablas(grupos) {
   standingsSection.hidden = false;
 }
 
+function crearTabla(columnas, filas) {
+  const tabla = crearElemento("table", "standing-table");
+  const cabeza = document.createElement("thead");
+  const encabezado = document.createElement("tr");
+  for (const columna of columnas) encabezado.append(crearElemento("th", "", columna));
+  cabeza.append(encabezado);
+  const cuerpo = document.createElement("tbody");
+  for (const fila of filas) {
+    const tr = crearElemento("tr", fila.clase || "");
+    for (const valor of fila.valores) {
+      tr.append(crearElemento("td", typeof valor === "number" ? "numeric-cell" : "", valor));
+    }
+    cuerpo.append(tr);
+  }
+  tabla.append(cabeza, cuerpo);
+  return tabla;
+}
+
+function formatear(valor, unidad) {
+  if (valor === null || valor === undefined) return "—";
+  return `${Number(valor).toLocaleString("es-CO", { maximumFractionDigits: 2 })} ${unidad}`;
+}
+
+function mostrarClasificacion(datos) {
+  const nombres = Object.fromEntries(datos.lenguajes.map((l) => [l.id, l.nombre]));
+  const { ranking, criterios, criterios_omitidos: omitidos, ganador } = datos.clasificacion;
+  const primero = ranking[0];
+
+  document.querySelector("#ranking-winner").textContent =
+    `🏆 Ganador: ${nombres[ganador]} con ${primero.puntaje_total.toFixed(2)} de 100 puntos`;
+
+  const contenedor = document.querySelector("#ranking");
+  contenedor.replaceChildren();
+
+  // 1. Clasificación final
+  const tarjetaRanking = crearElemento("article", "standing-card");
+  tarjetaRanking.append(crearElemento("h3", "standing-title", "Clasificación"));
+  tarjetaRanking.append(crearTabla(
+    ["#", "Lenguaje", ...criterios.map((c) => `${c.criterio} (${c.peso_rubrica}%)`), "Total"],
+    ranking.map((fila) => ({
+      clase: fila.posicion === 1 ? "qualifier" : "",
+      valores: [
+        fila.posicion,
+        nombres[fila.lenguaje],
+        ...fila.detalle.map((d) => `${formatear(d.valor, d.unidad)} → ${d.puntaje.toFixed(1)}`),
+        Number(fila.puntaje_total.toFixed(2)),
+      ],
+    })),
+  ));
+  contenedor.append(tarjetaRanking);
+
+  // 2. Pruebas de confiabilidad
+  const pruebas = datos.metricas[datos.lenguajes[0].id].pruebas.map((p) => p.prueba);
+  const tarjetaPruebas = crearElemento("article", "standing-card");
+  tarjetaPruebas.append(crearElemento("h3", "standing-title", "Pruebas de confiabilidad"));
+  tarjetaPruebas.append(crearTabla(
+    ["Prueba", ...datos.lenguajes.map((l) => l.nombre)],
+    pruebas.map((prueba, indice) => ({
+      valores: [prueba, ...datos.lenguajes.map((l) => (datos.metricas[l.id].pruebas[indice].superada ? "✓" : "✗"))],
+    })),
+  ));
+  contenedor.append(tarjetaPruebas);
+
+  // 3. Análisis del código
+  const tarjetaCodigo = crearElemento("article", "standing-card");
+  tarjetaCodigo.append(crearElemento("h3", "standing-title", "Análisis del código"));
+  tarjetaCodigo.append(crearTabla(
+    ["Lenguaje", "Líneas", "Funciones", "Líneas/función", "Op. funcionales", "Ciclos for/while", "Uso funcional"],
+    datos.lenguajes.map((l) => {
+      const c = datos.metricas[l.id].codigo;
+      return { valores: [l.nombre, c.lineas_codigo, c.funciones, c.lineas_por_funcion,
+        c.operaciones_funcionales, c.ciclos, `${c.uso_funcional_pct}%`] };
+    }),
+  ));
+  contenedor.append(tarjetaCodigo);
+
+  const notas = [
+    "Cada criterio: el mejor lenguaje recibe 100 y los demás una proporción. Total = suma ponderada.",
+  ];
+  if (omitidos.length > 0) {
+    notas.push(`No se pudo medir: ${omitidos.join(", ")}; sus pesos se repartieron entre los demás criterios.`);
+  }
+  if (!datos.memoria_disponible) {
+    notas.push("Para medir memoria instala psutil: python3 -m pip install psutil");
+  }
+  document.querySelector("#ranking-note").textContent = notas.join(" ");
+  rankingSection.hidden = false;
+}
+
 function mostrarResultados(datos) {
   const masRapido = Math.min(...datos.lenguajes.map((lenguaje) => lenguaje.mediana_ms));
 
@@ -151,6 +241,7 @@ function mostrarResultados(datos) {
   championNote.textContent =
     `Campeón del primer torneo: ${datos.lenguajes[0].campeon} · ` +
     `${datos.torneos} torneo(s) por ejecución · ${datos.repeticiones} repetición(es)`;
+  mostrarClasificacion(datos);
   mostrarLlave(datos.llave);
   mostrarTablas(datos.grupos);
   statusText.textContent = "Comparación completada.";
@@ -161,6 +252,7 @@ function limpiarResultados() {
   consistency.hidden = true;
   championNote.hidden = true;
   bracketSection.hidden = true;
+  rankingSection.hidden = true;
   standingsSection.hidden = true;
   for (const id of languageIds) {
     document.querySelector(`[data-language="${id}"]`).classList.remove("is-fastest");

@@ -18,6 +18,8 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 FRONTEND = ROOT / "frontend"
+sys.path.insert(0, str(ROOT / "benchmark"))
+import metricas  # noqa: E402  (memoria, calidad, confiabilidad, uso funcional y clasificación)
 TIEMPO_RE = re.compile(r"Tiempo:\s*([\d.]+)\s*ms")
 NUMEROS_ALEATORIOS = 100_000
 MAX_TORNEOS = 1_000
@@ -124,8 +126,16 @@ def nombre_ejecutable(comando: str) -> str:
     return f"{comando}.cmd" if sys.platform == "win32" else comando
 
 
-def medir(comando: list[str], cwd: Path, salida: Path) -> dict[str, object]:
-    stdout = ejecutar(comando, cwd)
+def medir(comando: list[str], cwd: Path, salida: Path, marca: str | None = None) -> dict[str, object]:
+    try:
+        codigo, stdout, stderr, memoria_mb = metricas.ejecutar_midiendo(comando, cwd, marca)
+    except FileNotFoundError as error:
+        raise RuntimeError(f"No se encontró el comando '{comando[0]}'.") from error
+    except subprocess.TimeoutExpired as error:
+        raise RuntimeError(f"El comando '{comando[0]}' superó el límite de 10 minutos.") from error
+    if codigo != 0:
+        detalle = (stderr or stdout or f"código {codigo}").strip()
+        raise RuntimeError(f"Falló '{comando[0]}': {detalle[-2000:]}")
     coincidencia = TIEMPO_RE.search(stdout)
     if not coincidencia:
         raise RuntimeError(f"No se encontró el tiempo de ejecución en la salida de {salida.name}.")
@@ -135,6 +145,7 @@ def medir(comando: list[str], cwd: Path, salida: Path) -> dict[str, object]:
         raise RuntimeError(f"No se pudo leer la salida JSON de {salida.name}: {error}") from error
     return {
         "tiempo_ms": float(coincidencia.group(1)),
+        "memoria_mb": memoria_mb,
         "campeon": resultado.get("campeon"),
         "salida": resultado,
     }
@@ -159,6 +170,63 @@ def preparar_java() -> None:
         ],
         ROOT,
     )
+
+
+def classpath_java() -> str:
+    separador = ";" if sys.platform == "win32" else ":"
+    return str(ROOT / "java" / "target" / "classes") + separador + str(ROOT / "java" / "target" / "dependency" / "*")
+
+
+def comando_python(opciones: list[str]) -> list[str]:
+    return [sys.executable, str(ROOT / "python" / "main.py"), *opciones]
+
+
+def comando_java(opciones: list[str]) -> list[str]:
+    return ["java", "-cp", classpath_java(), "com.copa.Main", *opciones]
+
+
+def comando_scala(opciones: list[str]) -> list[str]:
+    # sbt corre dentro de scala/, así que las rutas se pasan relativas a esa carpeta
+    partes = []
+    for indice, valor in enumerate(opciones):
+        es_ruta = indice > 0 and opciones[indice - 1] in ("--input", "--aleatorios", "--out")
+        partes.append(os.path.relpath(valor, ROOT / "scala") if es_ruta else valor)
+    return [nombre_ejecutable("sbt"), "--batch", "run " + " ".join(partes)]
+
+
+COMANDOS = {
+    "python": (comando_python, ROOT, None),
+    "java": (comando_java, ROOT, None),
+    "scala": (comando_scala, ROOT / "scala", "CopaSimulador"),
+}
+
+
+def mediana_o_none(valores: list[object]) -> float | None:
+    if not valores or any(valor is None for valor in valores):
+        return None
+    return round(statistics.median(valores), 2)
+
+
+def calcular_metricas(resultados, torneos, diferencias, archivo_aleatorios) -> dict[str, dict[str, object]]:
+    salida = {}
+    for lenguaje, corridas in resultados.items():
+        construir, cwd, marca = COMANDOS[lenguaje]
+        mediana_ms = statistics.median(corrida["tiempo_ms"] for corrida in corridas)
+        pruebas = [{"prueba": "Salida igual a la de los demás lenguajes", "superada": diferencias[lenguaje] is None}]
+        pruebas += metricas.pruebas_confiabilidad(
+            construir, cwd, ROOT / "data" / "input.json", archivo_aleatorios, marca)
+        codigo = metricas.analizar_codigo(lenguaje)
+        salida[lenguaje] = {
+            "tiempo_ms": round(mediana_ms, 2),
+            "memoria_mb": mediana_o_none([corrida["memoria_mb"] for corrida in corridas]),
+            "partidos_por_segundo": round(32 * torneos / max(mediana_ms / 1000, 1e-9), 2),
+            "lineas_por_funcion": codigo["lineas_por_funcion"],
+            "confiabilidad_pct": round(100 * sum(p["superada"] for p in pruebas) / len(pruebas), 2),
+            "uso_funcional_pct": codigo["uso_funcional_pct"],
+            "codigo": codigo,
+            "pruebas": pruebas,
+        }
+    return salida
 
 
 def comparar(torneos: int, repeticiones: int) -> dict[str, object]:
@@ -197,54 +265,27 @@ def comparar(torneos: int, repeticiones: int) -> dict[str, object]:
                 "--torneos",
                 str(torneos),
             ]
-            salida_python = medir(
-                [
-                    sys.executable,
-                    str(ROOT / "python" / "main.py"),
-                    *opciones,
-                    "--out",
-                    str(rutas["python"]),
-                ],
-                ROOT,
-                rutas["python"],
-            )
-            classpath = str(ROOT / "java" / "target" / "classes") + (
-                ";" if sys.platform == "win32" else ":"
-            ) + str(ROOT / "java" / "target" / "dependency" / "*")
-            salida_java = medir(
-                [
-                    "java",
-                    "-cp",
-                    classpath,
-                    "com.copa.Main",
-                    *opciones,
-                    "--out",
-                    str(rutas["java"]),
-                ],
-                ROOT,
-                rutas["java"],
-            )
-            comando_scala = (
-                f'run --input {os.path.relpath(ROOT / "data" / "input.json", ROOT / "scala")} '
-                f'--aleatorios {os.path.relpath(archivo_aleatorios, ROOT / "scala")} '
-                f'--torneos {torneos} --out {os.path.relpath(rutas["scala"], ROOT / "scala")}'
-            )
-            salida_scala = medir(
-                [nombre_ejecutable("sbt"), "--batch", comando_scala],
-                ROOT / "scala",
-                rutas["scala"],
-            )
+            salida_python = medir(comando_python([*opciones, "--out", str(rutas["python"])]),
+                                  ROOT, rutas["python"])
+            salida_java = medir(comando_java([*opciones, "--out", str(rutas["java"])]),
+                                ROOT, rutas["java"])
+            salida_scala = medir(comando_scala([*opciones, "--out", str(rutas["scala"])]),
+                                 ROOT / "scala", rutas["scala"], marca="CopaSimulador")
             resultados["python"].append(salida_python)
             resultados["java"].append(salida_java)
             resultados["scala"].append(salida_scala)
 
-    referencia = resultados["python"][-1]["salida"]
-    diferencia = None
-    for lenguaje in ("java", "scala"):
-        diferencia = primera_diferencia(referencia, resultados[lenguaje][-1]["salida"])
+        referencia = resultados["python"][-1]["salida"]
+        diferencia = None
+        diferencias = {"python": None}
+        for lenguaje in ("java", "scala"):
+            diferencias[lenguaje] = primera_diferencia(referencia, resultados[lenguaje][-1]["salida"])
+            if diferencias[lenguaje] and diferencia is None:
+                diferencia = f"python / {lenguaje}: {diferencias[lenguaje]}"
         if diferencia:
-            diferencia = f"python / {lenguaje}: {diferencia}"
-            break
+            diferencias["python"] = diferencia
+
+        tabla_metricas = calcular_metricas(resultados, torneos, diferencias, archivo_aleatorios)
 
     nombres_equipos = {
         str(equipo["id"]): equipo["nombre"]
@@ -258,6 +299,7 @@ def comparar(torneos: int, repeticiones: int) -> dict[str, object]:
             "id": clave,
             "nombre": nombre,
             "tiempos_ms": [corrida["tiempo_ms"] for corrida in corridas],
+            "memorias_mb": [corrida["memoria_mb"] for corrida in corridas],
             "mediana_ms": statistics.median(corrida["tiempo_ms"] for corrida in corridas),
             "campeon": nombres_equipos.get(
                 str(corridas[-1]["campeon"]), str(corridas[-1]["campeon"])
@@ -270,6 +312,9 @@ def comparar(torneos: int, repeticiones: int) -> dict[str, object]:
         "diferencia": diferencia,
         **visualizacion,
         "lenguajes": lenguajes,
+        "metricas": tabla_metricas,
+        "clasificacion": metricas.clasificar(tabla_metricas),
+        "memoria_disponible": metricas.psutil is not None,
     }
 
 

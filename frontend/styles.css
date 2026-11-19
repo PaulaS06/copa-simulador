@@ -204,3 +204,13 @@ select:focus-visible, button:focus-visible { outline: 2px solid var(--yellow); o
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Clasificación automática: una tarjeta por fila (las tablas son anchas) */
+.ranking-grid { grid-template-columns: 1fr; margin-top: 11px; }
+.ranking-grid .standing-table td, .ranking-grid .standing-table th { white-space: nowrap; }
+.ranking-grid .standing-card { overflow-x: auto; }
+.ranking-grid .standing-table { font-size: 11px; }
+.ranking-grid .standing-table th { font-size: 10px; }
+.ranking-grid .standing-table th, .ranking-grid .standing-table td { padding: 7px 8px; text-align: center; }
+.ranking-grid .standing-table th:nth-child(2), .ranking-grid .standing-table td:nth-child(2) { width: auto; }
+.ranking-grid .standing-table th:first-child, .ranking-grid .standing-table td:first-child { text-align: left; }
